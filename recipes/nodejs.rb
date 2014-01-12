@@ -25,7 +25,10 @@ end
 
 git "geoip-lite" do
   destination "/opt/geoip-lite"
-  repository "https://github.com/GUI/node-geoip.git"
+  repository "https://github.com/bluesmoon/node-geoip.git"
+  # Use unreleased version to fix CSV parsing issue:
+  # https://github.com/bluesmoon/node-geoip/issues/45#issuecomment-32132441
+  reference "f55a2e8264e7d659959b5c21f6407fba6ccd9bf9"
   user "geoip"
   notifies :run, "execute[geoip_lite_npm_install]"
   notifies :run, "execute[geoip_lite_updatedb]"
